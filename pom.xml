@@ -124,7 +124,7 @@
 		<maven-project-info-reports-plugin.version>3.4.5</maven-project-info-reports-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 		<spring-javaformat-maven-plugin.version>0.0.39</spring-javaformat-maven-plugin.version>
-
+		<versions.java-security-toolkit>1.2.0</versions.java-security-toolkit>
 	</properties>
 
 	<build>
@@ -344,6 +344,11 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.github.pixee</groupId>
+				<artifactId>java-security-toolkit</artifactId>
+				<version>${versions.java-security-toolkit}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
