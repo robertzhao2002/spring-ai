@@ -2,6 +2,7 @@ package org.springframework.ai.ollama.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.client.AiClient;
@@ -153,7 +154,7 @@ public class OllamaClient implements AiClient {
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
 			var results = new ArrayList<OllamaGenerateResult>();
 			String line;
-			while ((line = bufferedReader.readLine()) != null) {
+			while ((line = BoundedLineReader.readLine(bufferedReader, 5_000_000)) != null) {
 				processResponseLine(line, results);
 			}
 			return results;
